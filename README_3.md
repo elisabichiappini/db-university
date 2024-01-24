@@ -51,6 +51,13 @@ ORDER BY `teachers`.`surname`, `teachers`.`name`
 7. BONUS: Selezionare per ogni studente il numero di tentativi sostenuti
 per ogni esame, stampando anche il voto massimo. Successivamente,
 filtrare i tentativi con voto minimo 18.
+SELECT `students`.`id`, `students`.`name`, `students`.`surname`, `courses`.`name`, COUNT(`exam_student`.`vote`) AS `tentativi_esame`, MAX(`exam_student`.`vote`)  AS `voto_massimo_esame`, MIN(`exam_student`.`vote`)  AS `voto_massimo_esame`
+FROM `students`
+INNER JOIN `exam_student` ON `students`.`id` = `exam_student`.`student_id`
+INNER JOIN `exams` ON `exam_student`.`exam_id` = `exams`.`id`
+INNER JOIN `courses` ON `exams`.`course_id` = `courses`.`id`
+GROUP BY `students`.`id`,`courses`.`id`
+HAVING `voto_massimo_esame` >= 18
 
 Queries GROUP BY:
 1. Contare quanti iscritti ci sono stati ogni anno
