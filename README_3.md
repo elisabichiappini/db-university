@@ -1,25 +1,14 @@
 Queries JOIN:
 
 1. Selezionare tutti gli studenti iscritti al Corso di Laurea in Economia
-SELECT *
-FROM `students`
-INNER JOIN `degrees`
-ON `students`.`degree_id` = `degrees`.`id`
-WHERE `degrees`.`name` = "Corso di Laurea in Economia"
+SELECT `students`.`degree_id`,`students`.`surname` AS `cognome`, `students`.`name` AS `nome` FROM `students` 
+INNER JOIN `degrees` 
+ON `students`.`degree_id` = `degrees`.`id` 
+WHERE `degrees`.`name` = "Corso di Laurea in Economia" 
+ORDER BY `cognome`, `nome`;
 
-specifico:
-SELECT `degree_id` AS `code_degree`, `surname` AS `student`
-FROM `students`
-INNER JOIN `degrees`
-ON `students`.`degree_id` = `degrees`.`id`
-WHERE `degrees`.`name` = "Corso di Laurea in Economia"
+2. Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze
 
-2. Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di
-Neuroscienze
-SELECT * 
-FROM `degrees` 
-INNER JOIN `departments`
-ON `degrees`.`department_id` = `departments`.`id`
 
 3. Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
 
@@ -44,7 +33,7 @@ GROUP BY `year_enrolment`;
 SELECT COUNT(`id`), `office_address`
 FROM `teachers` 
 GROUP BY `office_address`
-ORDER BY`office_address` ASC;
+ORDER BY `office_address` ASC;
 
 3. Calcolare la media dei voti di ogni appello d'esame
 SELECT `exam_id` AS `appello esame`, AVG(`vote`) AS `media_esame`
