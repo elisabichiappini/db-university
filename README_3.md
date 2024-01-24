@@ -8,7 +8,7 @@ WHERE `degrees`.`name` = "Corso di Laurea in Economia"
 ORDER BY `cognome`, `nome`;
 
 2. Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze
-SELECT `degrees`.`name` AS `corso_magistrale`, `departments`.`name` AS `nome_dipartimento`
+SELECT `departments`.`name` AS `dipartimento`,`degrees`.`department_id` AS `codice_dipartimento`, `degrees`.`id` AS `codice_corso`,  `degrees`.`name` AS `dipartimento`
 FROM `degrees`
 INNER JOIN `departments`
 ON `degrees`.`department_id` = `departments`.`id`
